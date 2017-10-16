@@ -1,0 +1,92 @@
+RabbitMq Commands:
+
+To hold the screen after the server startup:
+
+java -jar target/rabbitmq-amqp-tutorials-0.0.1-SNAPSHOT.jar --spring.profiles.active=work-queues,sender --tutorial.client.duration=10000
+java -jar target/rabbitmq-amqp-tutorials-0.0.1-SNAPSHOT.jar --spring.profiles.active=work-queues,receiver --tutorial.client.duration=10000
+
+
+
+
+Kubernetes commands:
+
+.\minikube.exe start --kubernetes-version="v1.4.0" --vm-driver="virtualbox" --show-libmachine-logs --alsologtostderr
+
+
+
+MongoDB:
+
+md /data/db (Enter)
+mongod (Enter)
+
+or else define a file to provide the path for all storage for mongodb
+mongod.conf is the file which contains the below entries:
+
+dbpath=/Pluralsight/db
+logpath=/Pluralsight/mongod-server.log
+verbose=vvvvv
+
+mongod -f c:\Pluralsight\mongod.conf (Enter)
+
+To install as a service
+
+mongod -f c:\Pluralsight\mongod.conf --install (Enter)
+
+to start as a service 
+
+net start mongodb (Enter)
+
+To check the status 
+
+net start | findStr Mongo (Enter)
+
+mongo (Enter)
+
+show dbs (Enter)
+
+db (Enter)
+
+use foo (Enter)
+
+db (Enter)
+
+for background tasks use --eval 
+for example:
+mongo server1\admin --eval "db.runComannd({logRotate:1})"
+mongo server1\admin --eval "printjson(db.runComannd({logRotate:1}))"
+
+for complex tasks use script files
+EX:
+mongo server1 abc.js
+
+--shell
+mongo server1 abc.js
+
+For complext queries typing, you can use below steps:
+
+set Editor= path to ur fav editor
+in shell prompt,
+edit (Enter)
+
+mongo server1 abc.js --shell
+
+pwd()
+
+load('safer.js')
+
+To keep the scripts running through out in shell:
+use .mongorc.js file at the user's home directory
+for example:
+
+c:\Users\aja145\.mongorc.js
+
+to protet the database from deltion:
+DB.prototype.dropDatabase = function() {
+print("Don't do it Man !!");
+}
+db.dropDatabase = DB.prototype.dropDatabase;
+
+
+
+
+
